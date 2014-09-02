@@ -27,6 +27,9 @@ namespace MemoryBlock
             : base()
         {
             graphics = new GraphicsDeviceManager(this);
+            graphics.PreferredBackBufferHeight = 726;
+            graphics.PreferredBackBufferWidth = 1024;
+
             Content.RootDirectory = "Content";
 
             IsMouseVisible = true;
@@ -44,7 +47,7 @@ namespace MemoryBlock
         {
             // TODO: Add your initialization logic here
 
-            gMap = new Map(3, 4, new Vector2(300, 200));           
+            gMap = new Map(2, 2, new Vector2(250, 150));           
             base.Initialize();
         }
 
@@ -55,9 +58,12 @@ namespace MemoryBlock
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);                        
+            spriteBatch = new SpriteBatch(GraphicsDevice);
+            gMap.tiles.texture.Add(TextureIndex.Blank, Content.Load<Texture2D>("blank"));
             gMap.tiles.texture.Add(TextureIndex.Black, Content.Load<Texture2D>("blackBlock"));
             gMap.tiles.texture.Add(TextureIndex.White, Content.Load<Texture2D>("whiteBlock"));
+            gMap.tiles.texture.Add(TextureIndex.Red, Content.Load<Texture2D>("red"));
+            gMap.tiles.texture.Add(TextureIndex.Blue, Content.Load<Texture2D>("blue"));
             // TODO: use this.Content to load your game content here
         }
 
@@ -79,6 +85,10 @@ namespace MemoryBlock
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+            Input.ClickCheck(gMap);
+            Input.RandomizeColors(gMap);
+
+
 
             // TODO: Add your update logic here
 

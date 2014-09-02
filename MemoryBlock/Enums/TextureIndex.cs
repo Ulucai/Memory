@@ -8,6 +8,9 @@ namespace MemoryBlock
     public enum TextureIndex
     {
         Black,
-        White
+        White,
+        Red,
+        Blue,
+        Blank
     }
 }

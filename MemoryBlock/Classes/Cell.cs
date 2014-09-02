@@ -10,7 +10,7 @@ namespace MemoryBlock
 {
     public class Cell
     {
-        Rectangle bounds;
+        protected Rectangle bounds;
         public Vector2 position;
         public TextureIndex tile;
 
@@ -19,6 +19,18 @@ namespace MemoryBlock
             tile = texture;
             position = cellPosition;
             bounds = new Rectangle((int)position.X, (int)position.Y, width, height);
+        }
+
+        public void NextTileTexture()
+        {
+            if (tile.Equals(TextureIndex.White))
+            {
+                tile = TextureIndex.Black;
+            }
+            else
+            {
+                tile = TextureIndex.White;
+            }
         }
 
         public bool Intersects(Point p)
@@ -33,6 +45,13 @@ namespace MemoryBlock
                 return false;
             }
         }
+
+
+        public Rectangle Bounds 
+        {
+            get{ return bounds; }
+        }
+
 
     }
 }
