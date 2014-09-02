@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework.Storage;
 namespace MemoryBlock
 {
     /// <summary>
-    /// This is the main type for your game
+    /// This is the main type for your game VERIFICAR COM GABIROTO
     /// </summary>
     public class Game1 : Game
     {
