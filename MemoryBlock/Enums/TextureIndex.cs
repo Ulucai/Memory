@@ -9,8 +9,12 @@ namespace MemoryBlock
     {
         Black,
         White,
-        Red,
-        Blue,
-        Blank
+        Empty,
+        RedArrowLeft,
+        RedArrowRight,
+        RedBall,
+        RedHexagon,
+        RedStar,
+        RedSquare
     }
 }

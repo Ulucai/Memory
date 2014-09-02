@@ -13,7 +13,6 @@ namespace MemoryBlock
         static bool LeftMouseButtonPressed = false;
         static bool RightMouseButtonPressed = false;
         static MouseState ms;
-        static KeyboardState ks;
 
         public static void ClickCheck(Map map)
         {
@@ -28,7 +27,8 @@ namespace MemoryBlock
                         Tuple<int, int, bool> cellClicked = map.CheckCellUnderClick(ms.Position);
                         if (cellClicked.Item3)
                         {
-                            map.ChangeTileColor(cellClicked.Item1, cellClicked.Item2);
+                            //map.ChangeTileColor(cellClicked.Item1, cellClicked.Item2);
+                            map.ShowCell(cellClicked.Item1, cellClicked.Item2);
                         }
                     }
                     break;
@@ -59,16 +59,8 @@ namespace MemoryBlock
                         RightMouseButtonPressed = false;
                     }
                     break;
-            }            
-        }
-
-        public static void RandomizeColors(Map map)
-        {
-            ks = Keyboard.GetState();
-            if (ks.IsKeyDown(Keys.R))
-            {
-                map.RandomizeTiles();
             }
+            
         }
 
     }

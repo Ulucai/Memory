@@ -13,24 +13,29 @@ namespace MemoryBlock
         protected Rectangle bounds;
         public Vector2 position;
         public TextureIndex tile;
+        public bool isVisible;
 
         public Cell(int width, int height, Vector2 cellPosition, TextureIndex texture)
         {
             tile = texture;
             position = cellPosition;
             bounds = new Rectangle((int)position.X, (int)position.Y, width, height);
+            isVisible = false;
         }
 
         public void NextTileTexture()
         {
-            if (tile.Equals(TextureIndex.White))
+            if (!tile.Equals(TextureIndex.Empty))
             {
-                tile = TextureIndex.Black;
-            }
-            else
-            {
-                tile = TextureIndex.White;
-            }
+                if (tile.Equals(TextureIndex.White))
+                {
+                    tile = TextureIndex.Black;
+                }
+                else
+                {
+                    tile = TextureIndex.White;
+                }                
+            }            
         }
 
         public bool Intersects(Point p)
@@ -38,7 +43,7 @@ namespace MemoryBlock
             Rectangle click = new Rectangle(p.X, p.Y, 1, 1);
             if (click.Intersects(bounds))
             {
-                return true;
+                 return true;
             }
             else
             {
